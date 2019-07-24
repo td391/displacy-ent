@@ -15,7 +15,7 @@ header.o-banner
     .o-form
         +dropdown("checkbox", "ents", "Entities", { person: "PERSON", norp: "NORP", facility: "FACILITY", org: "ORG", gpe: "GPE", loc: "LOC", product: "PRODUCT", "event": "EVENT", work_of_art: "WORK OF ART", language: "LANGUAGE", date: "DATE", time: "TIME", percent: "PERCENT", money: "MONEY", quantity: "QUANTITY", ordinal: "ORDINAL", cardinal: "CARDINAL" }, [ "person", "org", "gpe", "loc", "product", "date", "time" ])
 
-        +dropdown("radio", "model", "Model", { en: "English (v0.101.0)", de: "German (v0.101.0)" }, "en")
+        +dropdown("radio", "model", "Model", { en_core_web_md: "English (v0.101.0)", de_core_news_sm: "German (v0.101.0)" }, "en_core_web_md")
 
 .o-container.u-text-medium.entities#displacy
 

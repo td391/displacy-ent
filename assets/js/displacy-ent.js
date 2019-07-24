@@ -10,7 +10,7 @@ class displaCyENT {
         this.container = document.querySelector(options.container || '#displacy');
 
         this.defaultText = options.defaultText || 'When Sebastian Thrun started working on self-driving cars at Google in 2007, few people outside of the company took him seriously.';
-        this.defaultModel = options.defaultModel || 'en';
+        this.defaultModel = options.defaultModel || 'en_core_web_md';
         this.defaultEnts = options.defaultEnts || ['person', 'org', 'gpe', 'loc', 'product'];
 
         this.onStart = options.onStart || false;
@@ -25,7 +25,7 @@ class displaCyENT {
 
         let xhr = new XMLHttpRequest();
         xhr.open('POST', this.api, true);
-        xhr.setRequestHeader('Content-type', 'text/plain');
+        xhr.setRequestHeader('Content-type', 'application/json');
         xhr.onreadystatechange = () => {
             if(xhr.readyState === 4 && xhr.status === 200) {
                 if(typeof this.onSuccess === 'function') this.onSuccess();
@@ -49,7 +49,7 @@ class displaCyENT {
         this.container.innerHTML = '';
         let offset = 0;
 
-        spans.forEach(({ type, start, end }) => {
+        spans.forEach(({ label, start, end }) => {
             const entity = text.slice(start, end);
             const fragments = text.slice(offset, start).split('\n');
 
@@ -58,9 +58,9 @@ class displaCyENT {
                 if(fragments.length > 1 && i != fragments.length - 1) this.container.appendChild(document.createElement('br'));
             });
 
-            if(ents.includes(type.toLowerCase())) {
+            if(ents.includes(label.toLowerCase())) {
                 const mark = document.createElement('mark');
-                mark.setAttribute('data-entity', type.toLowerCase());
+                mark.setAttribute('data-entity', label.toLowerCase());
                 mark.appendChild(document.createTextNode(entity));
                 this.container.appendChild(mark);
             }
