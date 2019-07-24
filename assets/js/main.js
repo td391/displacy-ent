@@ -12,7 +12,6 @@
 
     const loading = () => document.body.classList.toggle('loading');
     const onError = (err) => $('#error').style.display = 'block';
-    const updateHTML = () => $('#html').value = `<div class="entities">${$('#displacy').innerHTML}</div>`;
 
     const displacy = new displaCyENT(api, {
         container: '#displacy',
@@ -21,7 +20,6 @@
         defaultEnts: defaultEnts,
         onStart: loading,
         onSuccess: loading,
-        onRender: updateHTML,
         onError: onError
     });
 
@@ -41,7 +39,6 @@
 
         if(getQueryVar('text')) updateView(text, model, ents);
         displacy.parse(text, model, ents);
-        $('#css').value = renderCSS('displacy-ent.css');
     });
 
     // Run Demo
@@ -77,19 +74,6 @@
         const params = { text, ents, model };
         const url = Object.keys(params).map(param => `${param}=${encodeURIComponent(params[param])}`);
         history.pushState(params, null, '?' + url.join('&'));
-    }
-
-
-    // Render CSS from stylesheet
-
-    const renderCSS = (filename) => {
-        let rules = [];
-        for(let sheet of document.styleSheets) if(sheet.href.indexOf(filename) != -1) for(let rule of sheet.cssRules) rules.push(rule.cssText);
-        return rules.join('')
-            .replace(/;((?! }))/g, ';\n' + '    ')
-            .replace(/\{/g, '{\n' + '    ')
-            .replace(/\}/g, '\n}\n\n')
-            .trim()
     }
 
 
