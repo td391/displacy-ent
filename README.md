@@ -3,7 +3,7 @@
 # displaCy ENT: A modern named entity visualiser
 
 > ⚠️ **As of v2.0.0, the displaCy visualizers are now integrated into
-> the core library. [See here](https://spacy.io/usage/visualizers) for more 
+> the core library. [See here](https://spacy.io/usage/visualizers) for more
 > details on how to visualize a `Doc` object from within spaCy. We're also
 > working on a new suite of tools for serving and testing spaCy models. The
 > code of the standalone visualizers will still be available on GitHub, just
@@ -27,6 +27,12 @@ harp server
 ```
 
 The demo is written in ECMAScript 6. For full, cross-browser compatibility, make sure to use a compiler like [Babel](https://github.com/babel/babel). For more info, see this [compatibility table](https://kangax.github.io/compat-table/es6/).
+
+## Deploy on S3
+```bash
+harp compile
+aws s3 sync ./ww/ s3://$BUCKET/ --acl public-read
+```
 
 ## Using displacy-ent.js
 
