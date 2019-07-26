@@ -10,7 +10,7 @@ class displaCyENT {
         this.container = document.querySelector(options.container || '#displacy');
 
         this.defaultText = options.defaultText || 'When Sebastian Thrun started working on self-driving cars at Google in 2007, few people outside of the company took him seriously.';
-        this.defaultModel = options.defaultModel || 'en_core_web_lg';
+        this.defaultModel = options.defaultModel || 'en_core_web_md';
         this.defaultEnts = options.defaultEnts || ['person', 'org', 'gpe', 'loc', 'product'];
 
         this.onStart = options.onStart || false;

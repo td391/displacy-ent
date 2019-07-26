@@ -31,7 +31,7 @@ The demo is written in ECMAScript 6. For full, cross-browser compatibility, make
 ## Deploy on S3
 ```bash
 harp compile
-aws s3 sync ./ww/ s3://$BUCKET/ --acl public-read
+aws s3 sync ./www/ s3://$BUCKET/ --acl public-read
 ```
 
 ## Using displacy-ent.js

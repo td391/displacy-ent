@@ -1,8 +1,7 @@
 {
     "index": {
-        "title": "displaCy Name Entity Visualizer",
-        "description": "Visualise spaCy's guess at the named entities in the document. You can filter the displayed types, to only show the annotations you're interested in.",
-        "github": "explosion/displacy-ent",
+        "title": "Name Entity Visualizer",
+        "description": "Visualise the named entities in the document. You can filter the displayed types, to only show the annotations you're interested in.",
         "api": "http://localhost:8080/ent/",
 
         "stylesheets": [ "displacy-ent" ],
